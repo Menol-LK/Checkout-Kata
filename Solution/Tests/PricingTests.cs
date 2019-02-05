@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Chekout;
+using Chekout.Interfaces;
 
 namespace UnitTestProject1
 {
@@ -11,13 +13,33 @@ namespace UnitTestProject1
         private const string C = "C";
         private const string D = "D";
 
+        private PricingEngine pricingEngine;
 
-        private static int getPrice(string item)
+        [TestInitialize]
+        public void Reset()
         {
-            return -1;
+            if(pricingEngine == null)
+            {
+                var stratForA = new NForNPricingStrategy() { ApplicableItemType = "A", SetSize = 3, PriceForASet = 130 };
+                var stratForB = new NForNPricingStrategy() { ApplicableItemType = "B", SetSize = 2, PriceForASet = 45 };
+
+                pricingEngine = new PricingEngine(new IPricingStrategy[] { stratForA, stratForB });
+            }
+            else
+            {
+                pricingEngine.ClearItems();
+            }
         }
 
-        private static int getPrice(params string[] items)
+        private int getPrice(string item)
+        {
+            pricingEngine.ClearItems();
+
+            pricingEngine.AddItem(item);
+            return pricingEngine.GetTotal();
+        }
+
+        private int getPrice(params string[] items)
         {
             return -1;
         }

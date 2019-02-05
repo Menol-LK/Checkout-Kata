@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chekout
 {
-    class PricingEngine
+    public class PricingEngine
     {
         private List<string> allItems;
         private IEnumerable<IPricingStrategy> pricingStrategies;
@@ -45,6 +45,11 @@ namespace Chekout
             }
 
             return total;
+        }
+
+        public void ClearItems()
+        {
+            allItems?.Clear();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chekout.Interfaces
 {
-    interface IPricingStrategy
+    public interface IPricingStrategy
     {
         string ApplicableItemType { get; set; }
 
