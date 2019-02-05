@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="BasicCheckout.cs" />
     <Compile Include="BasicPricingStrategy.cs" />
+    <Compile Include="DummyPriceProvider.cs" />
+    <Compile Include="Interfaces\IPriceProvider.cs" />
     <Compile Include="Interfaces\IPricingStrategy.cs" />
     <Compile Include="Interfaces\ICheckout.cs" />
     <Compile Include="PricingEngine.cs" />

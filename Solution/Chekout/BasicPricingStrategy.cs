@@ -13,7 +13,9 @@ namespace Chekout
 
         public int GetPrice(string[] allItems)
         {
-            return allItems.Where(item => item.Equals(ApplicableItemType, StringComparison.OrdinalIgnoreCase)).Sum(item => /* get item price */);
+            var priceProvider = new DummyPriceProvider();
+
+            return allItems?.Where(item => item.Equals(ApplicableItemType, StringComparison.OrdinalIgnoreCase))?.Sum(item => priceProvider.GetPrice(item)) ?? 0;
         }
     }
 }
