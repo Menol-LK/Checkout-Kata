@@ -8,6 +8,8 @@ namespace Chekout.Interfaces
 {
     interface IPricingStrategy
     {
-        string Item { get; set; }
+        string ApplicableItemType { get; set; }
+
+        int GetPrice(string[] allItems);
     }
 }
