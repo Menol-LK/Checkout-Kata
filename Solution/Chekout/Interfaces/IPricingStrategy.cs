@@ -10,6 +10,6 @@ namespace Chekout.Interfaces
     {
         string ApplicableItemType { get; set; }
 
-        int GetPrice(string[] allItems);
+        int GetSubTotal(IEnumerable<string> allItems);  
     }
 }

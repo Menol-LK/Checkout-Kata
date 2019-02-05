@@ -11,7 +11,7 @@ namespace Chekout
     {
         public string ApplicableItemType { get; set; }
 
-        public int GetPrice(string[] allItems)
+        public int GetSubTotal(IEnumerable<string> allItems)
         {
             var priceProvider = new DummyPriceProvider();
 
