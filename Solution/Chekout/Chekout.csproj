@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IPriceProvider.cs" />
     <Compile Include="Interfaces\IPricingStrategy.cs" />
     <Compile Include="Interfaces\ICheckout.cs" />
+    <Compile Include="NForNPricingStrategy.cs" />
     <Compile Include="PricingEngine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
