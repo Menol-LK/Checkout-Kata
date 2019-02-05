@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCheckout.cs" />
+    <Compile Include="BasicPricingStrategy.cs" />
     <Compile Include="Interfaces\IPricingStrategy.cs" />
     <Compile Include="Interfaces\ICheckout.cs" />
     <Compile Include="PricingEngine.cs" />
