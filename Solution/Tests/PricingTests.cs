@@ -25,10 +25,6 @@ namespace UnitTestProject1
 
                 pricingEngine = new PricingEngine(new IPricingStrategy[] { stratForA, stratForB });
             }
-            else
-            {
-                pricingEngine.ClearItems();
-            }
         }
 
         private int getPrice(string item)
@@ -41,7 +37,10 @@ namespace UnitTestProject1
 
         private int getPrice(params string[] items)
         {
-            return -1;
+            pricingEngine.ClearItems();
+
+            pricingEngine.AddItems(items);
+            return pricingEngine.GetTotal();
         }
 
         [TestMethod]
@@ -58,7 +57,7 @@ namespace UnitTestProject1
         {
             Assert.AreEqual(getPrice(A, B, C, D), 115, "Wrong total for A, B, C, D");
             Assert.AreEqual(getPrice(A, A, C, D), 135, "Wrong total for A, A, C, D");
-            Assert.AreEqual(getPrice(A, B, B, D), 125, "Wrong total for A, B, B, D");
+            Assert.AreEqual(getPrice(A, B, B, D), 110, "Wrong total for A, B, B, D");
             Assert.AreEqual(getPrice(A, B, C, C), 120, "Wrong total for A, B, C, C");
         }
 

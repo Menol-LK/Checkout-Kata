@@ -20,7 +20,7 @@ namespace Chekout
             int unitPrice = dummyPriceProvider.GetPrice(ApplicableItemType);
             var noOfItemsOfThisType = allItems?.Count(item => item.Equals(ApplicableItemType, StringComparison.OrdinalIgnoreCase)) ?? 0;
             
-            int subTotal = (noOfItemsOfThisType / SetSize) * unitPrice; // price for complete sets
+            int subTotal = (noOfItemsOfThisType / SetSize) * PriceForASet; // price for complete sets
             subTotal += (noOfItemsOfThisType % SetSize) * unitPrice;  // price for any remaining items
 
             return subTotal;

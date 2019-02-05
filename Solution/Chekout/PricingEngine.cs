@@ -27,6 +27,16 @@ namespace Chekout
             allItems.Add(item);
         }
 
+        public void AddItems(string[] items)
+        {
+            if (allItems == null)
+            {
+                allItems = new List<string>();
+            }
+
+            allItems.AddRange(items);
+        }
+
         public int GetTotal()
         {
             int total = 0;
