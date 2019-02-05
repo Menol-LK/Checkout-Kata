@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chekout
 {
-    public class PricingEngine
+    class PricingEngine
     {
         private List<string> allItems;
         private IEnumerable<IPricingStrategy> pricingStrategies;
@@ -25,16 +25,6 @@ namespace Chekout
             }
 
             allItems.Add(item);
-        }
-
-        public void AddItems(string[] items)
-        {
-            if (allItems == null)
-            {
-                allItems = new List<string>();
-            }
-
-            allItems.AddRange(items);
         }
 
         public int GetTotal()

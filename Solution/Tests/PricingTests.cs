@@ -13,34 +13,32 @@ namespace UnitTestProject1
         private const string C = "C";
         private const string D = "D";
 
-        private PricingEngine pricingEngine;
+        BasicCheckout checkout;
 
         [TestInitialize]
         public void Reset()
         {
-            if(pricingEngine == null)
-            {
-                var stratForA = new NForNPricingStrategy() { ApplicableItemType = "A", SetSize = 3, PriceForASet = 130 };
-                var stratForB = new NForNPricingStrategy() { ApplicableItemType = "B", SetSize = 2, PriceForASet = 45 };
-
-                pricingEngine = new PricingEngine(new IPricingStrategy[] { stratForA, stratForB });
-            }
+            checkout = new BasicCheckout();
         }
 
         private int getPrice(string item)
         {
-            pricingEngine.ClearItems();
+            checkout.NewSession();
+            checkout.Scan(item);
 
-            pricingEngine.AddItem(item);
-            return pricingEngine.GetTotal();
+            return checkout.GetTotalPrice();
         }
 
         private int getPrice(params string[] items)
         {
-            pricingEngine.ClearItems();
+            checkout.NewSession();
 
-            pricingEngine.AddItems(items);
-            return pricingEngine.GetTotal();
+            foreach (var item in items)
+            {
+                checkout.Scan(item);
+            }
+
+            return checkout.GetTotalPrice();
         }
 
         [TestMethod]

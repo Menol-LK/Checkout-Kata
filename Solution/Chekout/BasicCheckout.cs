@@ -7,16 +7,31 @@ using System.Threading.Tasks;
 
 namespace Chekout
 {
-    class BasicCheckout : ICheckout
+    public class BasicCheckout : ICheckout
     {
+        readonly PricingEngine pricingEngine;
+
+        public BasicCheckout()
+        {
+            var stratForA = new NForNPricingStrategy() { ApplicableItemType = "A", SetSize = 3, PriceForASet = 130 };
+            var stratForB = new NForNPricingStrategy() { ApplicableItemType = "B", SetSize = 2, PriceForASet = 45 };
+
+            pricingEngine = new PricingEngine(new IPricingStrategy[] { stratForA, stratForB });
+        }
+
         public int GetTotalPrice()
         {
-            throw new NotImplementedException();
+            return pricingEngine.GetTotal();
         }
 
         public void Scan(string item)
         {
-            throw new NotImplementedException();
+            pricingEngine.AddItem(item);
+        }
+
+        public void NewSession()
+        {
+            pricingEngine.ClearItems();
         }
     }
 }

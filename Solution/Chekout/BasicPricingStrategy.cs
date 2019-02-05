@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chekout
 {
-    public class BasicPricingStrategy : IPricingStrategy
+    class BasicPricingStrategy : IPricingStrategy
     {
         public string ApplicableItemType { get; set; }
 

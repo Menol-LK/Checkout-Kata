@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chekout
 {
-    public class NForNPricingStrategy : IPricingStrategy
+    class NForNPricingStrategy : IPricingStrategy
     {
         public string ApplicableItemType { get; set; }
         public int SetSize { get; set; } 
